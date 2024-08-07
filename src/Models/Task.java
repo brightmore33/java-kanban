@@ -1,3 +1,7 @@
+package Models;
+
+import Enums.TaskState;
+
 public class Task {
 
     private final int id;
@@ -5,7 +9,7 @@ public class Task {
     private final String description;
     private final TaskState state;
 
-    public Task(int id, String name, String description) {
+    public Task(String name, String description) {
         this.name = name;
         this.description = description;
         this.state = TaskState.NEW;
