@@ -28,4 +28,20 @@ public class Task {
         this.description = description;
         this.state = state;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "(id = '" + id + "'" +
+                ", name = '" + name + "'" +
+                ", state = '" + state + "'" +
+                ", description = '" + description + "')";
+    }
 }
