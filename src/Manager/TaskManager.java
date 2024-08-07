@@ -29,6 +29,18 @@ public class TaskManager {
         return newTask;
     }
 
+    public Task updateTask(Task updatedTask) {
+        int updatedTaskId = updatedTask.getId();
+        if (tasks.containsKey(updatedTaskId)) {
+            tasks.put(updatedTaskId,updatedTask);
+            System.out.println("Задача обновлена");
+            return updatedTask;
+        } else {
+            System.out.println("Такой задачи нет");
+            return null;
+        }
+    }
+
     // получить список всех задач
     public ArrayList<Task> getAllTasks() {
         if (!tasks.isEmpty()) {
