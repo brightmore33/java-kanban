@@ -29,6 +29,7 @@ public class TaskManager {
         return newTask;
     }
 
+    // обновление задачи
     public Task updateTask(Task updatedTask) {
         int updatedTaskId = updatedTask.getId();
         if (tasks.containsKey(updatedTaskId)) {
@@ -39,6 +40,15 @@ public class TaskManager {
             System.out.println("Такой задачи нет");
             return null;
         }
+    }
+
+    // получение задачи по идетификатору
+    public Task getTaskById(int taskId) {
+        if (tasks.containsKey(taskId)) {
+            return tasks.get(taskId);
+        }
+        System.out.println("Такой задачи нет");
+        return null;
     }
 
     // получить список всех задач
