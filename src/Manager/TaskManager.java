@@ -68,4 +68,19 @@ public class TaskManager {
             System.out.println("Такой задачи нет");
         }
     }
+
+    // ---=== Эпики и их Методы===---
+
+    public Epic addNewEpic(Epic newEpic) {
+        if (newEpic == null) {
+            System.out.println("Прверка на пустоту не пройдена");
+            return null;
+        } else {
+            int newEpicID = getNewId();
+            newEpic.setId(newEpicID);
+            epics.put(newEpicID, newEpic);
+            System.out.println("Задача Эпик добавлена");
+            return newEpic;
+        }
+    }
 }

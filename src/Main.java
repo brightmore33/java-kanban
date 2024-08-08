@@ -1,5 +1,6 @@
 import Enums.TaskState;
 import Manager.TaskManager;
+import Models.Epic;
 import Models.Task;
 
 public class Main {
@@ -13,6 +14,10 @@ public class Main {
         Task task1 = taskManager.addNewTask(new Task("Задача 1-я", "Погладить кота, а лучше вещи"));
         Task task2 = taskManager.addNewTask(new Task("Задача 2-я", "Вынести мусор"));
         Task task3 = taskManager.addNewTask(new Task("Задача 3-я", "Замочить таракана"));
+
+        Epic epic1 = taskManager
+
+                .
 
         // обновляем Таску
         Task newTask = new Task(task1.getId(), "Задача 1-я", "Погладить кота, а лучше вещи", TaskState.IN_PROGRESS);
