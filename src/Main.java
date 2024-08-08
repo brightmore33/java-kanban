@@ -21,6 +21,10 @@ public class Main {
         // вытаскиваем Таску по идентификатору
         System.out.println("Получаем задачу по id:\n" + taskManager.getTaskById(2));
 
+        // удаляем задачу
+        System.out.println("Удалим задачу:");
+        taskManager.removeTaskById(1);
+
         // вывод всех Тасков
         System.out.println("Список всех задач:\n" + taskManager.getAllTasks());
     }

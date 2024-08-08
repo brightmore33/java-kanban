@@ -59,4 +59,13 @@ public class TaskManager {
         System.out.println("Список задас пуст");
         return null;
     }
+
+    // удаление Таски по идентификатору
+    public void removeTaskById(int taskId) {
+        if (tasks.containsKey(taskId)) {
+            tasks.remove(taskId);
+        } else {
+            System.out.println("Такой задачи нет");
+        }
+    }
 }
