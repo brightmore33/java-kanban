@@ -164,6 +164,17 @@ public class TaskManager {
         return subtasks.get(subtaskID);
     }
 
+    public void removeSubtaskByID(int subtaskID) {
+        Subtask subtask = subtasks.remove(subtaskID);
+        if (subtask == null) {
+            return;
+        } else {
+            Epic epic = epics.get(subtask.getEpicID());
+            epic.deleteSubTaskID(subtaskID);
+            updateEpicState(epic.getId());
+        }
+    }
+
     public void removeAllSubtasks() {
         subtasks.clear();
         for (Epic epic : epics.values()) {
