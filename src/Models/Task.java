@@ -23,7 +23,6 @@ public class Task {
         this.state = state;
     }
 
-
     public Task(int id, String name, String description, TaskState state) {
         this.id = id;
         this.name = name;

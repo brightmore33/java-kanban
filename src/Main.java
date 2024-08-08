@@ -1,6 +1,7 @@
 import Enums.TaskState;
 import Manager.TaskManager;
 import Models.Epic;
+import Models.Subtask;
 import Models.Task;
 
 public class Main {
@@ -38,5 +39,13 @@ public class Main {
 
         // вывод всех Эпиков
         System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
+
+        // вводим подзадачи
+        Subtask subtask1ForEpic1 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "1-я подзадача к 1-му Эпику",
+                "Помыть полы", TaskState.IN_PROGRESS));
+        Subtask subtask2ForEpic1 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "2-я подзадача к 1-му Эпику",
+                "Протереть пыль", TaskState.NEW));
+        Subtask subtask3ForEpic1 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "3-я подзадача к 1-му Эпику",
+                "Вытряхнуть половик", TaskState.NEW));
     }
 }

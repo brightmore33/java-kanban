@@ -137,6 +137,23 @@ public class TaskManager {
 
     // ---=== Подзадачи и Методы===---
 
+    public Subtask addNewSubtask(Subtask newSubtask) {
+        int epicID = newSubtask.getEpicID();
+        if (!epics.containsKey(epicID)) {
+            System.out.println("Такой Эпик задачи нет");
+            return null;
+        } else {
+            int newSubtaskID = getNewId();
 
+            newSubtask.setId(newSubtaskID);
+            subtasks.put(newSubtaskID, newSubtask);
+            Epic baseEpic = epics.get(epicID);
+            baseEpic.addSubTaskID(newSubtaskID);
+            updateEpicState(epicID);
+
+            System.out.println("Добавлена подзадача");
+            return newSubtask;
+        }
+    }
 
 }
