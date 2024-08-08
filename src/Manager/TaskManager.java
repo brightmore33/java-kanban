@@ -163,4 +163,12 @@ public class TaskManager {
     public Subtask getSubtaskByID(int subtaskID) {
         return subtasks.get(subtaskID);
     }
+
+    public void removeAllSubtasks() {
+        subtasks.clear();
+        for (Epic epic : epics.values()) {
+            epic.clearSubTasksIDs();
+            updateEpicState(epic.getId());
+        }
+    }
 }

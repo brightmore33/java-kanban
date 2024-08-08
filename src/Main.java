@@ -66,5 +66,11 @@ public class Main {
 
         // вывод подзадачи по идентификатору
         System.out.println("Подзадача 6:\n" + "    " + taskManager.getSubtaskByID(6));
+
+        // удаляем все подзадачи
+        System.out.println("Удаление всех подзадач...");
+        taskManager.removeAllSubtasks();
+        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
+        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
     }
 }
