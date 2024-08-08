@@ -72,6 +72,12 @@ public class Main {
         taskManager.removeSubtaskByID(5);
         System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
 
+        // обновляем подзадачу
+        Subtask updatedSubtask3ForEpic2 = new Subtask(epic2.getId(), "3-я подзадача к 2-му Эпику", "Накормить собакена", TaskState.IN_PROGRESS);
+        updatedSubtask3ForEpic2.setId(subtask3ForEpic2.getId());
+        taskManager.updateSubtask(updatedSubtask3ForEpic2);
+        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
+
         // удаляем все подзадачи
         System.out.println("Удаление всех подзадач...");
         taskManager.removeAllSubtasks();

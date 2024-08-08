@@ -182,4 +182,26 @@ public class TaskManager {
             updateEpicState(epic.getId());
         }
     }
+
+    public void updateSubtask(Subtask subtask) {
+        Subtask updatedSubtask = subtasks.get(subtask.getId());
+        if (updatedSubtask == null) {
+            System.out.println("Подзадачи нет");
+            return;
+        }
+
+        Epic epic = epics.get(subtask.getEpicID());
+        if (epic == null) {
+            System.out.println("Задачи Эпик нет");
+            return;
+        }
+
+        if (!updatedSubtask.getEpicID().equals(subtask.getEpicID())) {
+            System.out.println("Нет возможности обновить подзадачу");
+            return;
+        }
+
+        subtasks.put(subtask.getId(), subtask);
+        updateEpicState(epic.getId());
+    }
 }
