@@ -156,4 +156,8 @@ public class TaskManager {
         }
     }
 
+    public ArrayList<Subtask> getAllSubtasks() {
+        return new ArrayList<>(subtasks.values());
+    }
+
 }

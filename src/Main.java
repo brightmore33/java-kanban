@@ -18,6 +18,7 @@ public class Main {
 
         // Добавляем Эпики
         Epic epic1 = taskManager.addNewEpic(new Epic("Задача 1-я - Эпик", "Уборка"));
+        Epic epic2 = taskManager.addNewEpic(new Epic("Задача 2-я - Эпик", "Собакен"));
 
         // обновляем Таску
         Task newTask = new Task(task1.getId(), "Задача 1-я", "Погладить кота, а лучше вещи", TaskState.IN_PROGRESS);
@@ -40,7 +41,7 @@ public class Main {
         // вывод всех Эпиков
         System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
 
-        // --== ВВОДИМ ПОДЗАДАЧИ ==-
+        // --== BEGIN: ВВОДИМ ПОДЗАДАЧИ ==-
 
         // Для 1-го Эпика
         Subtask subtask1ForEpic1 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "1-я подзадача к 1-му Эпику",
@@ -49,5 +50,18 @@ public class Main {
                 "Протереть пыль", TaskState.NEW));
         Subtask subtask3ForEpic1 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "3-я подзадача к 1-му Эпику",
                 "Вытряхнуть половик", TaskState.NEW));
+
+        // Для 2-го Эпика
+        Subtask subtask1ForEpic2 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "1-я подзадача к 2-му Эпику",
+                "Погулять с Умой", TaskState.DONE));
+        Subtask subtask2ForEpic2 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "2-я подзадача к 2-му Эпику",
+                "Помыть собаню после прогулки", TaskState.IN_PROGRESS));
+        Subtask subtask3ForEpic2 = taskManager.addNewSubtask(new Subtask(epic1.getId(), "3-я подзадача к 2-му Эпику",
+                "Накормить собакена", TaskState.NEW));
+
+        // --== END: ВВЕЛИ ПОДЗАДАЧИ ==-
+
+        // вывод все подзадачи
+        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
     }
 }
