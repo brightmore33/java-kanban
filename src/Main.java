@@ -32,6 +32,10 @@ public class Main {
         // вывод всех Тасков
         System.out.println("Список всех задач:\n" + taskManager.getAllTasks());
 
+        // обновляем Эпик задачу
+        Epic newEpic = new Epic(epic1.getId(), "Задача 1-я - Эпик", "Уборка", TaskState.DONE);
+        System.out.println(taskManager.updateEpic(newEpic));
+
         // вывод всех Эпиков
         System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
     }

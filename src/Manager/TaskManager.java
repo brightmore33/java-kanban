@@ -85,14 +85,15 @@ public class TaskManager {
         }
     }
 
-    public Epic updateEpic(Epic updateEpic) {
-        int idEpic = updateEpic.getId();
-        if (epics.containsKey(idEpic)) {
-            Epic updatingEpic = epics.get(idEpic);
-            updatingEpic.setName(updateEpic.getName());
-            updatingEpic.setDescription(updateEpic.getDescription());
+    public Epic updateEpic(Epic updatedEpic) {
+        int updatedEpicId = updatedEpic.getId();
+        if (epics.containsKey(updatedEpicId)) {
+            Epic updatingEpic = epics.get(updatedEpicId);
+            updatingEpic.setName(updatedEpic.getName());
+            updatingEpic.setDescription(updatedEpic.getDescription());
+            epics.put(updatedEpicId, updatedEpic);
             System.out.println("Задача Эпик обновлена");
-            return updateEpic;
+            return updatedEpic;
         } else {
             System.out.println("Такой Эпик задачи нет");
             return null;

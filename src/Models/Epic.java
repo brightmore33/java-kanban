@@ -12,6 +12,10 @@ public class Epic extends Task {
         super(name, description, TaskState.NEW);
     }
 
+    public Epic(Integer id, String name, String description, TaskState state) {
+        super(id, name, description, state);
+    }
+
     // --== Методы Эпиков ==--
 
     // получаем идентификаторы подзадач
