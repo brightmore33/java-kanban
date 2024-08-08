@@ -83,4 +83,43 @@ public class TaskManager {
             return newEpic;
         }
     }
+
+    public Epic updateEpic(Epic updateEpic) {
+        int idEpic = updateEpic.getId();
+        if (epics.containsKey(idEpic)) {
+            Epic updatingEpic = epics.get(idEpic);
+            updatingEpic.set
+        }
+    }
+
+    private void updateEpicState(int epicId) {
+        Epic updatedEpic = epics.get(epicId);
+
+        int counterNew = 0;
+        int counterDone = 0;
+
+        if (updatedEpic.getSubtasksId().isEmpty()) {
+            updatedEpic.setStatus(Status.NEW);
+            return;
+        }
+        for (int id : updatedEpic.getSubtasksId()) {
+            if (subtasks.get(id).getStatus() == Status.NEW) {
+                counterNew++;
+            } else if (subtasks.get(id).getStatus() == Status.DONE) {
+                counterDone++;
+            }
+        }
+        if ((counterNew == updatedEpic.getSubtasksId().size())) {
+            updatedEpic.setStatus(Status.NEW);
+        } else if (counterDone == updatedEpic.getSubtasksId().size()) {
+            updatedEpic.setStatus(Status.DONE);
+        } else {
+            updatedEpic.setStatus(Status.IN_PROGRESS);
+        }
+    }
+
+    // ---=== Подзадачи и Методы===---
+
+
+
 }
