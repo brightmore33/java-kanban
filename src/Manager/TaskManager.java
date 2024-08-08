@@ -88,8 +88,12 @@ public class TaskManager {
         int idEpic = updateEpic.getId();
         if (epics.containsKey(idEpic)) {
             Epic updatingEpic = epics.get(idEpic);
-            updatingEpic.setName(updatingEpic.getName());
-
+            updatingEpic.setName(updateEpic.getName());
+            updatingEpic.setDescription(updateEpic.getDescription());
+            System.out.println("Задача Эпик обновлена");
+            return updateEpic;
+        } else {
+            System.out.println("Такой Эпик задачи нет");
         }
     }
 
