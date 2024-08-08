@@ -2,6 +2,8 @@ package Models;
 
 import Enums.TaskState;
 
+import java.util.Objects;
+
 public class Task {
 
     protected int id;
@@ -43,5 +45,10 @@ public class Task {
                 ", name = '" + name + "'" +
                 ", state = '" + state + "'" +
                 ", description = '" + description + "')";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, state);
     }
 }
