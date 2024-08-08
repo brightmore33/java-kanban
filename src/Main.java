@@ -63,5 +63,8 @@ public class Main {
 
         // вывод все подзадачи
         System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
+
+        // вывод подзадачи по идентификатору
+        System.out.println("Подзадача 6:\n" + "    " + taskManager.getSubtaskByID(6));
     }
 }

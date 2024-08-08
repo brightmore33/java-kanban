@@ -160,4 +160,7 @@ public class TaskManager {
         return new ArrayList<>(subtasks.values());
     }
 
+    public Subtask getSubtaskByID(int subtaskID) {
+        return subtasks.get(subtaskID);
+    }
 }
