@@ -74,4 +74,13 @@ public class Task {
     public int hashCode() {
         return Objects.hash(id, name, description, state);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Task task = (Task) obj;
+        return Objects.equals(id, task.id) && Objects.equals(name, task.name)
+                && state == task.state && Objects.equals(description, task.description);
+    }
 }
