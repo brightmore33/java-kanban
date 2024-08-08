@@ -88,7 +88,8 @@ public class TaskManager {
         int idEpic = updateEpic.getId();
         if (epics.containsKey(idEpic)) {
             Epic updatingEpic = epics.get(idEpic);
-            updatingEpic.set
+            updatingEpic.setName(updatingEpic.getName());
+
         }
     }
 
