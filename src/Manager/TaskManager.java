@@ -1,5 +1,6 @@
 package Manager;
 
+import Enums.TaskState;
 import Models.Epic;
 import Models.Subtask;
 import Models.Task;
@@ -94,6 +95,7 @@ public class TaskManager {
             return updateEpic;
         } else {
             System.out.println("Такой Эпик задачи нет");
+            return null;
         }
     }
 
@@ -103,23 +105,32 @@ public class TaskManager {
         int counterNew = 0;
         int counterDone = 0;
 
-        if (updatedEpic.getSubtasksId().isEmpty()) {
-            updatedEpic.setStatus(Status.NEW);
+        if (updatedEpic.getSubTasksIDs().isEmpty()) {
+            updatedEpic.setState(TaskState.NEW);
             return;
         }
-        for (int id : updatedEpic.getSubtasksId()) {
-            if (subtasks.get(id).getStatus() == Status.NEW) {
+        for (int id : updatedEpic.getSubTasksIDs()) {
+            if (subtasks.get(id).getState() == TaskState.NEW) {
                 counterNew++;
-            } else if (subtasks.get(id).getStatus() == Status.DONE) {
+            } else if (subtasks.get(id).getState() == TaskState.DONE) {
                 counterDone++;
             }
         }
-        if ((counterNew == updatedEpic.getSubtasksId().size())) {
-            updatedEpic.setStatus(Status.NEW);
-        } else if (counterDone == updatedEpic.getSubtasksId().size()) {
-            updatedEpic.setStatus(Status.DONE);
+        if ((counterNew == updatedEpic.getSubTasksIDs().size())) {
+            updatedEpic.setState(TaskState.NEW);
+        } else if (counterDone == updatedEpic.getSubTasksIDs().size()) {
+            updatedEpic.setState(TaskState.DONE);
         } else {
-            updatedEpic.setStatus(Status.IN_PROGRESS);
+            updatedEpic.setState(TaskState.IN_PROGRESS);
+        }
+    }
+
+    public ArrayList<Epic> getAllEpics() {
+        if (!epics.isEmpty()) {
+            return new ArrayList<>(epics.values());
+        } else {
+            System.out.println("Эпиков нет");
+            return null;
         }
     }
 

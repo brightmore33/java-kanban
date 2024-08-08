@@ -15,9 +15,8 @@ public class Main {
         Task task2 = taskManager.addNewTask(new Task("Задача 2-я", "Вынести мусор"));
         Task task3 = taskManager.addNewTask(new Task("Задача 3-я", "Замочить таракана"));
 
-        Epic epic1 = taskManager
-
-                .
+        // Добавляем Эпики
+        Epic epic1 = taskManager.addNewEpic(new Epic("Задача 1-я - Эпик", "Уборка"));
 
         // обновляем Таску
         Task newTask = new Task(task1.getId(), "Задача 1-я", "Погладить кота, а лучше вещи", TaskState.IN_PROGRESS);
@@ -32,5 +31,8 @@ public class Main {
 
         // вывод всех Тасков
         System.out.println("Список всех задач:\n" + taskManager.getAllTasks());
+
+        // вывод всех Эпиков
+        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
     }
 }

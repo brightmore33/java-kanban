@@ -55,6 +55,14 @@ public class Task {
         this.description = description;
     }
 
+    public TaskState getState() {
+        return state;
+    }
+
+    public void setState(TaskState state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "(id = '" + id + "'" +
