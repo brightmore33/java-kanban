@@ -135,6 +135,11 @@ public class TaskManager {
         }
     }
 
+    public void removeAllEpics() {
+        subtasks.clear();
+        epics.clear();
+    }
+
     // ---=== Подзадачи и Методы===---
 
     public Subtask addNewSubtask(Subtask newSubtask) {
