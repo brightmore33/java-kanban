@@ -71,6 +71,9 @@ public class TaskManager {
     }
 
 
+    public void removeAllTasks() {
+        tasks.clear();
+    }
 
     // ---=== Эпики и их Методы===---
 
