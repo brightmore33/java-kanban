@@ -61,6 +61,10 @@ public class Main {
 
         // --== END: ВВЕЛИ ПОДЗАДАЧИ ==-
 
+        // удалим Эпик
+        taskManager.removeEpicByID(epic1.getId());
+        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
+
         // вывод все подзадачи
         System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
 
@@ -83,5 +87,9 @@ public class Main {
         taskManager.removeAllSubtasks();
         System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
         System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
+
+        // удалим все Эпики
+        taskManager.removeAllEpics();
+        System.out.println("Список всех задач Эпик - после их удаления:\n" + taskManager.getAllEpics());
     }
 }

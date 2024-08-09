@@ -70,6 +70,8 @@ public class TaskManager {
         }
     }
 
+
+
     // ---=== Эпики и их Методы===---
 
     public Epic addNewEpic(Epic newEpic) {
@@ -138,6 +140,18 @@ public class TaskManager {
     public void removeAllEpics() {
         subtasks.clear();
         epics.clear();
+    }
+
+    public void removeEpicByID(int epicID) {
+        if (epics.containsKey(epicID)) {
+            Epic removedEpic = epics.get(epicID);
+            for (Integer subtaskID : removedEpic.getSubTasksIDs()) {
+                subtasks.remove(subtaskID);
+            }
+            epics.remove(epicID);
+        } else {
+            System.out.println("Такого Эпика нет. Удлить нельзя.");
+        }
     }
 
     // ---=== Подзадачи и Методы===---
