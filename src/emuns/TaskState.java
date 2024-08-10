@@ -1,4 +1,4 @@
-package Enums;
+package emuns;
 
 public enum TaskState {
     NEW,

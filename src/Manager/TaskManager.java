@@ -1,6 +1,6 @@
 package Manager;
 
-import Enums.TaskState;
+import emuns.TaskState;
 import Models.Epic;
 import Models.Subtask;
 import Models.Task;
@@ -54,11 +54,8 @@ public class TaskManager {
 
     // получить список всех задач
     public ArrayList<Task> getAllTasks() {
-        if (!tasks.isEmpty()) {
-            return new ArrayList<>(tasks.values());
-        }
-        System.out.println("Список задас пуст");
-        return null;
+        if (tasks.isEmpty()) return null;
+        return new ArrayList<>(tasks.values());
     }
 
     // удаление Таски по идентификатору
@@ -122,7 +119,7 @@ public class TaskManager {
                 counterDone++;
             }
         }
-        if ((counterNew == updatedEpic.getSubTasksIDs().size())) {
+        if (counterNew == updatedEpic.getSubTasksIDs().size()) {
             updatedEpic.setState(TaskState.NEW);
         } else if (counterDone == updatedEpic.getSubTasksIDs().size()) {
             updatedEpic.setState(TaskState.DONE);
@@ -132,12 +129,8 @@ public class TaskManager {
     }
 
     public ArrayList<Epic> getAllEpics() {
-        if (!epics.isEmpty()) {
-            return new ArrayList<>(epics.values());
-        } else {
-            System.out.println("Эпиков нет");
-            return null;
-        }
+        if (epics.isEmpty()) return null;
+        return new ArrayList<>(epics.values());
     }
 
     public void removeAllEpics() {

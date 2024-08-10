@@ -1,6 +1,6 @@
 package Models;
 
-import Enums.TaskState;
+import emuns.TaskState;
 
 import java.util.Objects;
 
