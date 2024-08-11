@@ -1,9 +1,9 @@
-package Manager;
+package manager;
 
 import emuns.TaskState;
-import Models.Epic;
-import Models.Subtask;
-import Models.Task;
+import models.Epic;
+import models.Subtask;
+import models.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class TaskManager {
     public Task updateTask(Task updatedTask) {
         int updatedTaskId = updatedTask.getId();
         if (tasks.containsKey(updatedTaskId)) {
-            tasks.put(updatedTaskId,updatedTask);
+            tasks.put(updatedTaskId, updatedTask);
             System.out.println("Задача обновлена");
             return updatedTask;
         } else {
@@ -54,7 +54,6 @@ public class TaskManager {
 
     // получить список всех задач
     public ArrayList<Task> getAllTasks() {
-        if (tasks.isEmpty()) return null;
         return new ArrayList<>(tasks.values());
     }
 
@@ -129,7 +128,6 @@ public class TaskManager {
     }
 
     public ArrayList<Epic> getAllEpics() {
-        if (epics.isEmpty()) return null;
         return new ArrayList<>(epics.values());
     }
 

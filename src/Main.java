@@ -1,8 +1,8 @@
 import emuns.TaskState;
-import Manager.TaskManager;
-import Models.Epic;
-import Models.Subtask;
-import Models.Task;
+import manager.TaskManager;
+import models.Epic;
+import models.Subtask;
+import models.Task;
 
 public class Main {
 
