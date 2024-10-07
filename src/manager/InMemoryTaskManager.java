@@ -8,7 +8,7 @@ import models.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InMemoryTaskManager implements TaskManagerInter {
+public class InMemoryTaskManager implements TaskManager {
 
     private int idCounter = 0;
     private final HashMap<Integer, Task> tasks = new HashMap<>();

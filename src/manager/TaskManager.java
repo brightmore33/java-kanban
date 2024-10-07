@@ -6,7 +6,7 @@ import models.Task;
 
 import java.util.ArrayList;
 
-public interface TaskManagerInter {
+public interface TaskManager {
     int getNewId();
 
     // новая задача
