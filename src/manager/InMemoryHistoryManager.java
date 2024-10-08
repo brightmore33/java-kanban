@@ -27,6 +27,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
+    // добавляем запись в конец истории
     private void addLast(Task segment) {
         final Node<Task> oldTail = tail;
         final Node<Task> newNode = new Node<>(oldTail, segment, null);
@@ -41,6 +42,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         size++;
     }
 
+    // удаляем запись
     private void removeNode(Node<Task> actualNode) {
         if (actualNode == head) {
             head = actualNode.next;
@@ -64,6 +66,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         size--;
     }
 
+    // получаем список истории
     private List<Task> getTasks() {
         List<Task> history = new ArrayList<>();
         Node<Task> actualNode = head;
