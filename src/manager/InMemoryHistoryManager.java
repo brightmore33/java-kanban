@@ -2,6 +2,8 @@ package manager;
 
 
 import models.Task;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +64,16 @@ public class InMemoryHistoryManager implements HistoryManager {
         size--;
     }
 
+    private List<Task> getTasks() {
+        List<Task> history = new ArrayList<>();
+        Node<Task> actualNode = head;
 
+        while (actualNode != null) {
+            history.add(actualNode.data);
+            actualNode = actualNode.next;
+        }
+        return history;
+    }
 
     @Override
     public void add(Task task) {
