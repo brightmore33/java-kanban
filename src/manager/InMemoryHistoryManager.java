@@ -25,6 +25,20 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
+    private void addLast(Task segment) {
+        final Node<Task> oldTail = tail;
+        final Node<Task> newNode = new Node<>(oldTail, segment, null);
+
+        tail = newNode;
+
+        if (oldTail == null) {
+            head = newNode;
+        } else {
+            oldTail.next = newNode;
+        }
+        size++;
+    }
+
     @Override
     public void add(Task task) {
 
