@@ -43,7 +43,10 @@ public class Main {
         // --== END: ВВЕЛИ ПОДЗАДАЧИ ==-
 
         taskManager.getTaskById(task1.getId());
+        taskManager.getTaskById(task2.getId());
+        printHistory(taskManager);
 
+        taskManager.getSubtaskByID(subtask1ForEpic1.getId());
         printHistory(taskManager);
     }
 

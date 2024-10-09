@@ -57,6 +57,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task getTaskById(int taskId) {
         if (tasks.containsKey(taskId)) {
+            historyManager.add(tasks.get(taskId));
             return tasks.get(taskId);
         }
         System.out.println("Такой задачи нет");
