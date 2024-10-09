@@ -22,27 +22,6 @@ public class Main {
         Epic epic1 = taskManager.addNewEpic(new Epic("Задача 1-я - Эпик", "Уборка"));
         Epic epic2 = taskManager.addNewEpic(new Epic("Задача 2-я - Эпик", "Собакен"));
 
-        // обновляем Таску
-        Task newTask = new Task(task1.getId(), "Задача 1-я", "Погладить кота, а лучше вещи", TaskState.IN_PROGRESS);
-        System.out.println(taskManager.updateTask(newTask));
-
-        // вытаскиваем Таску по идентификатору
-        System.out.println("Получаем задачу по id:\n" + taskManager.getTaskById(2));
-
-        // удаляем задачу
-        System.out.println("Удалим задачу:");
-        taskManager.removeTaskById(1);
-
-        // вывод всех Тасков
-        System.out.println("Список всех задач:\n" + taskManager.getAllTasks());
-
-        // обновляем Эпик задачу
-        Epic newEpic = new Epic(epic1.getId(), "Задача 1-я - Эпик", "Уборка", TaskState.DONE);
-        System.out.println(taskManager.updateEpic(newEpic));
-
-        // вывод всех Эпиков
-        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
-
         // --== BEGIN: ВВОДИМ ПОДЗАДАЧИ ==-
 
         // Для 1-го Эпика
@@ -63,35 +42,15 @@ public class Main {
 
         // --== END: ВВЕЛИ ПОДЗАДАЧИ ==-
 
-        // удалим Эпик
-        taskManager.removeEpicByID(epic1.getId());
-        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
+        taskManager.getTaskById(task1.getId());
 
-        // вывод все подзадачи
-        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
+        printHistory(taskManager);
+    }
 
-        // вывод подзадачи по идентификатору
-        System.out.println("Подзадача 6:\n" + "    " + taskManager.getSubtaskByID(6));
-
-        // удалим подзадачу по идентификатору
-        System.out.println("Удаление позадачи 5...");
-        taskManager.removeSubtaskByID(5);
-        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
-
-        // обновляем подзадачу
-        Subtask updatedSubtask3ForEpic2 = new Subtask(epic2.getId(), "3-я подзадача к 2-му Эпику", "Накормить собакена", TaskState.IN_PROGRESS);
-        updatedSubtask3ForEpic2.setId(subtask3ForEpic2.getId());
-        taskManager.updateSubtask(updatedSubtask3ForEpic2);
-        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
-
-        // удаляем все подзадачи
-        System.out.println("Удаление всех подзадач...");
-        taskManager.removeAllSubtasks();
-        System.out.println("Список всех подзадач:\n" + "    " + taskManager.getAllSubtasks());
-        System.out.println("Список всех задач Эпик:\n" + taskManager.getAllEpics());
-
-        // удалим все Эпики
-        taskManager.removeAllEpics();
-        System.out.println("Список всех задач Эпик - после их удаления:\n" + taskManager.getAllEpics());
+    public static void printHistory(TaskManager manager) {
+        System.out.println("История");
+        for (Task task : manager.getHistory()) {
+            System.out.println(task);
+        }
     }
 }

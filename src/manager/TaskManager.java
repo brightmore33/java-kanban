@@ -5,6 +5,7 @@ import models.Subtask;
 import models.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface        TaskManager {
     int getNewId();
@@ -47,4 +48,6 @@ public interface        TaskManager {
     void removeAllSubtasks();
 
     void updateSubtask(Subtask subtask);
+
+    List<Task> getHistory();
 }

@@ -7,6 +7,7 @@ import models.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
 
@@ -15,8 +16,10 @@ public class InMemoryTaskManager implements TaskManager {
     private final HashMap<Integer, Epic> epics = new HashMap<>();
     private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
 
+    private HistoryManager historyManager;
+
     public InMemoryTaskManager() {
-        HistoryManager historyManager = Managers.getDefaultHistory();
+        this.historyManager = Managers.getDefaultHistory();
     }
 
     @Override
@@ -238,5 +241,10 @@ public class InMemoryTaskManager implements TaskManager {
 
         subtasks.put(subtask.getId(), subtask);
         updateEpicState(epic.getId());
+    }
+
+    @Override
+    public List<Task> getHistory() {
+        return historyManager.getHistory();
     }
 }
