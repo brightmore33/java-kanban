@@ -197,7 +197,12 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask getSubtaskByID(int subtaskID) {
-        return subtasks.get(subtaskID);
+        if (subtasks.containsKey(subtaskID)) {
+            historyManager.add(subtasks.get(subtaskID));
+            return subtasks.get(subtaskID);
+        }
+        System.out.println("Такой подзадачи нет.");
+        return null;
     }
 
     @Override
