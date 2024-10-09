@@ -31,6 +31,8 @@ public interface        TaskManager {
 
     Epic updateEpic(Epic updatedEpic);
 
+    Epic getEpicById(int id);
+
     ArrayList<Epic> getAllEpics();
 
     void removeAllEpics();

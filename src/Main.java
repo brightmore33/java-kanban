@@ -44,6 +44,8 @@ public class Main {
 
         taskManager.getTaskById(task1.getId());
         taskManager.getTaskById(task2.getId());
+        taskManager.getSubtaskByID(subtask1ForEpic2.getId());
+        taskManager.get
         printHistory(taskManager);
 
         taskManager.getSubtaskByID(subtask1ForEpic1.getId());
