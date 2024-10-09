@@ -45,10 +45,18 @@ public class Main {
         taskManager.getTaskById(task1.getId());
         taskManager.getTaskById(task2.getId());
         taskManager.getSubtaskByID(subtask1ForEpic2.getId());
-        taskManager.get
+        taskManager.getEpicById(epic1.getId());
         printHistory(taskManager);
 
         taskManager.getSubtaskByID(subtask1ForEpic1.getId());
+        taskManager.getEpicById(epic2.getId());
+        taskManager.getSubtaskByID(subtask3ForEpic1.getId());
+        taskManager.getSubtaskByID(subtask2ForEpic1.getId());
+        printHistory(taskManager);
+
+        taskManager.getTaskById(task3.getId());
+        taskManager.getSubtaskByID(subtask3ForEpic2.getId());
+        taskManager.getSubtaskByID(subtask2ForEpic2.getId());
         printHistory(taskManager);
     }
 
