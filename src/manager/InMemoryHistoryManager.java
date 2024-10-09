@@ -71,7 +71,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         List<Task> history = new ArrayList<>();
         Node<Task> actualNode = head;
 
-        while (actualNode != null) {
+        while (actualNode != null)  {
             history.add(actualNode.data);
             actualNode = actualNode.next;
         }
