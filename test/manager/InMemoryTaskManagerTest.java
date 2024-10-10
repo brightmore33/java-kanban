@@ -206,8 +206,8 @@ class InMemoryTaskManagerTest {
     void shouldAddNewSubTask() {
         taskManager.addNewEpic(epic);
         subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим.", TaskState.IN_PROGRESS);
-        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим."
-                , TaskState.IN_PROGRESS);
+        Subtask expectedSubtask = new Subtask(epic.getId(), 1, "Первая подзадача", "Пошобуршим.",
+                TaskState.IN_PROGRESS);
 
         Subtask currentSubtask = taskManager.addNewSubtask(subtask);
 
@@ -234,7 +234,7 @@ class InMemoryTaskManagerTest {
     void shouldUpdateSubtask() {
         taskManager.addNewEpic(epic);
         subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
-        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим.",
+        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
                 TaskState.DONE);
 
         Subtask updatedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
