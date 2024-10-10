@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryTaskManagerTest {
@@ -27,7 +29,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void shouldAddNewTask() {
-        Task expectedTask = new Task(0, "Первая задача", "Пурум пум",TaskState.NEW);
+        Task expectedTask = new Task(0, "Первая задача", "Пурум пум", TaskState.NEW);
 
         Task currentTask = taskManager.addNewTask(task);
 
@@ -46,4 +48,45 @@ class InMemoryTaskManagerTest {
         Assertions.assertEquals(task.getName(), currentTask.getName());
         Assertions.assertEquals(task.getState(), currentTask.getState());
     }
+
+    @Test
+    void shouldUpdateTask() {
+        Task expectedTask = new Task(0, "Первая задача", "Пурум пум", TaskState.DONE);
+
+        Task addedTask = taskManager.addNewTask(task);
+        Task updatedTask = new Task(addedTask.getId(), "Первая задача", "Румба парам", TaskState.DONE);
+        taskManager.updateTask(updatedTask);
+
+        Task currentTask = taskManager.getTaskById(addedTask.getId());
+
+        Assertions.assertEquals(expectedTask, currentTask);
+        Assertions.assertEquals(updatedTask.getState(), currentTask.getState());
+    }
+
+    @Test
+    void shouldGetTaskById() {
+        Task exepectedTask = new Task(0, "Первая задача", "Пурум пум", TaskState.NEW);
+
+        Task addedTask = taskManager.addNewTask(task);
+        Task currentTask = taskManager.getTaskById(addedTask.getId());
+
+        Assertions.assertEquals(exepectedTask, currentTask);
+    }
+
+    @Test
+    void shouldGetAllTasks() {
+        Task task1 = new Task("Первая задача", "Пурум пум", TaskState.NEW);
+        Task task2 = new Task("Вторая задача", "Что-то там", TaskState.IN_PROGRESS);
+        Task task3 = new Task("Третья задача", "Вот это пвоворот!!!", TaskState.DONE);
+
+        taskManager.addNewTask(task1);
+        taskManager.addNewTask(task2);
+        taskManager.addNewTask(task3);
+        final List<Task> tasks = taskManager.getAllTasks();
+
+        Assertions.assertNotNull(tasks, "Список должен быть не пуст.");
+        Assertions.assertEquals(3, tasks.size());
+    }
+
+
 }
