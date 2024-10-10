@@ -201,4 +201,47 @@ class InMemoryTaskManagerTest {
         Assertions.assertNotNull(epics, "Список Эпиков не должен быть пустым.");
         Assertions.assertTrue(epics.isEmpty(), "Дожен быть пустой список.");
     }
+
+    @Test
+    void shouldAddNewSubTask() {
+        taskManager.addNewEpic(epic);
+        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим.", TaskState.IN_PROGRESS);
+        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим."
+                , TaskState.IN_PROGRESS);
+
+        Subtask currentSubtask = taskManager.addNewSubtask(subtask);
+
+        Assertions.assertNotNull(currentSubtask);
+        Assertions.assertNotNull(currentSubtask.getId());
+        Assertions.assertEquals(expectedSubtask, currentSubtask);
+    }
+
+    @Test
+    void shouldSubtasksIdsDoNotConflict() {
+        taskManager.addNewEpic(epic);
+        Subtask subtask1 = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
+                TaskState.NEW);
+        Subtask subtask2 = new Subtask(epic.getId(), "Вторая подзадача", "Пошобуршим второй раз");
+
+        taskManager.addNewSubtask(subtask1);
+        taskManager.addNewSubtask(subtask2);
+
+        Assertions.assertNotEquals(subtask1.getId(), subtask2.getId(), "Идентификаторы подздача должны " +
+                "различаться.");
+    }
+
+    @Test
+    void shouldUpdateSubtask() {
+        taskManager.addNewEpic(epic);
+        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
+        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим.",
+                TaskState.DONE);
+
+        Subtask updatedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
+                TaskState.DONE);
+        taskManager.updateSubtask(updatedSubtask);
+        Subtask currentSubtask = taskManager.getSubtaskByID(updatedSubtask.getId());
+
+        Assertions.assertEquals(expectedSubtask, currentSubtask);
+    }
 }
