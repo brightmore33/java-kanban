@@ -176,7 +176,29 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void shouldDeleteAllEpics() {
+    void shouldRemoveEpicById() {
+        Epic epicToRemove = taskManager.addNewEpic(epic);
 
+        taskManager.removeEpicByID(epicToRemove.getId());
+        Epic removedEpic = taskManager.getEpicById(epicToRemove.getId());
+
+        Assertions.assertNull(removedEpic);
+    }
+
+    @Test
+    void shouldRemoveAllEpics() {
+        Epic epic1 = new Epic("Первый Эпик", "Рум пум пам");
+        Epic epic2 = new Epic("Второй Эпик", "Рум пум пам Second");
+        Epic epic3 = new Epic("Третий Эпик", "Рум пум пам Third");
+
+        taskManager.addNewEpic(epic1);
+        taskManager.addNewEpic(epic2);
+        taskManager.addNewEpic(epic3);
+
+        taskManager.removeAllEpics();
+        final List<Epic> epics = taskManager.getAllEpics();
+
+        Assertions.assertNotNull(epics, "Список Эпиков не должен быть пустым.");
+        Assertions.assertTrue(epics.isEmpty(), "Дожен быть пустой список.");
     }
 }
