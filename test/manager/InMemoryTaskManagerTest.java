@@ -137,5 +137,46 @@ class InMemoryTaskManagerTest {
         Assertions.assertNotEquals(epic1.getId(), epic2.getId(), "Идентификаторы не должны совпадать.");
     }
 
+    @Test
+    void shouldGetEpicById() {
+        Epic expectedEpic = new Epic(0, "Первый Эпик", "Рум пум пам", TaskState.NEW);
 
+        Epic savedEpic = taskManager.addNewEpic(epic);
+        Epic currentEpic = taskManager.getEpicById(savedEpic.getId());
+
+        Assertions.assertEquals(expectedEpic, currentEpic);
+    }
+
+    @Test
+    void shouldGetAllEpics() {
+        Epic epic1 = new Epic("Первый Эпик", "Рум пум пам");
+        Epic epic2 = new Epic("Второй Эпик", "Рум пум пам Second");
+        Epic epic3 = new Epic("Третий Эпик", "Рум пум пам Third");
+
+        taskManager.addNewEpic(epic1);
+        taskManager.addNewEpic(epic2);
+        taskManager.addNewEpic(epic3);
+
+        final List<Epic> epics = taskManager.getAllEpics();
+
+        Assertions.assertNotNull(epics, "Список Эпиков не должен быть пустым.");
+        Assertions.assertEquals(3, epics.size());
+    }
+
+    @Test
+    void shouldUpdateEpic() {
+        Epic expectedEpic = new Epic(0, "Первый Эпик", "Рум пум пам", TaskState.NEW);
+
+        Epic addedEpic = taskManager.addNewEpic(epic);
+        Epic updatedEpic = new Epic(0, "Первый Эпик", "Рум пум пам", TaskState.NEW);
+        taskManager.updateEpic(updatedEpic);
+        Epic currentEpic = taskManager.getEpicById(addedEpic.getId());
+
+        Assertions.assertEquals(expectedEpic, currentEpic);
+    }
+
+    @Test
+    void shouldDeleteAllEpics() {
+
+    }
 }
