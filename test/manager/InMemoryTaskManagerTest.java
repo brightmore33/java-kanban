@@ -247,4 +247,17 @@ class InMemoryTaskManagerTest {
         System.out.println(expectedSubtask);
         System.out.println(currentSubtask);
     }
+
+    @Test
+    void shouldGetSubtaskById() {
+        taskManager.addNewEpic(epic);
+        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
+        Subtask expectedSubtask = new Subtask(epic.getId(), 1, "Первая подзадача", "Пошобуршим",
+                TaskState.NEW);
+
+        Subtask savedSubtask = taskManager.addNewSubtask(subtask);
+        Subtask currentSubtask = taskManager.getSubtaskByID(savedSubtask.getId());
+
+        Assertions.assertEquals(expectedSubtask, currentSubtask);
+    }
 }
