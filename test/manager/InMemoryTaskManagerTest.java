@@ -205,7 +205,7 @@ class InMemoryTaskManagerTest {
     @Test
     void shouldAddNewSubTask() {
         taskManager.addNewEpic(epic);
-        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим.", TaskState.IN_PROGRESS);
+        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим.");
         Subtask expectedSubtask = new Subtask(epic.getId(), 1, "Первая подзадача", "Пошобуршим.",
                 TaskState.IN_PROGRESS);
 
@@ -234,14 +234,17 @@ class InMemoryTaskManagerTest {
     void shouldUpdateSubtask() {
         taskManager.addNewEpic(epic);
         subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
-        Subtask expectedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
+        Subtask expectedSubtask = new Subtask(epic.getId(), 1, "Первая подзадача", "Пошобуршим",
                 TaskState.DONE);
 
-        Subtask updatedSubtask = new Subtask(epic.getId(), 2, "Первая подзадача", "Пошобуршим",
+        Subtask addedSubtask = taskManager.addNewSubtask(subtask);
+        Subtask updatedSubtask = new Subtask(epic.getId(), 1, "Первая подзадача", "Пошобуршим",
                 TaskState.DONE);
         taskManager.updateSubtask(updatedSubtask);
         Subtask currentSubtask = taskManager.getSubtaskByID(updatedSubtask.getId());
 
         Assertions.assertEquals(expectedSubtask, currentSubtask);
+        System.out.println(expectedSubtask);
+        System.out.println(currentSubtask);
     }
 }
