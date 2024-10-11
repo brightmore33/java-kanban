@@ -260,4 +260,51 @@ class InMemoryTaskManagerTest {
 
         Assertions.assertEquals(expectedSubtask, currentSubtask);
     }
+
+    @Test
+    void shouldGetAllSubtasks() {
+        taskManager.addNewEpic(epic);
+        Subtask subtask1 = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
+        Subtask subtask2 = new Subtask(epic.getId(), "Вторая подзадача", "Буршим шо");
+        Subtask subtask3 = new Subtask(epic.getId(), "Третья подзадача", "Шим по");
+
+        taskManager.addNewSubtask(subtask1);
+        taskManager.addNewSubtask(subtask2);
+        taskManager.addNewSubtask(subtask3);
+
+        final List<Subtask> subtasks = taskManager.getAllSubtasks();
+
+        Assertions.assertNotNull(subtasks, "Список подзадач не должен быть пустым.");
+        Assertions.assertEquals(3, subtasks.size());
+    }
+
+    @Test
+    void shouldRemoveSubtaskById() {
+        taskManager.addNewEpic(epic);
+        subtask = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
+        Subtask subtaskForRemove = taskManager.addNewSubtask(subtask);
+
+        taskManager.removeSubtaskByID(subtaskForRemove.getId());
+        Subtask removedSubtask = taskManager.getSubtaskByID(subtaskForRemove.getId());
+
+        Assertions.assertNull(removedSubtask);
+    }
+
+    @Test
+    void shouldRemoveAllSubtasks() {
+        taskManager.addNewEpic(epic);
+        Subtask subtask1 = new Subtask(epic.getId(), "Первая подзадача", "Пошобуршим");
+        Subtask subtask2 = new Subtask(epic.getId(), "Вторая подзадача", "Буршим шо");
+        Subtask subtask3 = new Subtask(epic.getId(), "Третья подзадача", "Шим по");
+
+        taskManager.addNewSubtask(subtask1);
+        taskManager.addNewSubtask(subtask2);
+        taskManager.addNewSubtask(subtask3);
+
+        taskManager.removeAllSubtasks();
+        final List<Subtask> subtasks = taskManager.getAllSubtasks();
+
+        Assertions.assertNotNull(subtasks, "Список подзадач не должен быть пустым.");
+        Assertions.assertTrue(subtasks.isEmpty(), "Список подзадач должен быть пустым.");
+    }
 }
