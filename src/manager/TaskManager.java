@@ -20,7 +20,7 @@ public interface        TaskManager {
     Task getTaskById(int taskId);
 
     // получить список всех задач
-    ArrayList<Task> getAllTasks();
+    List<Task> getAllTasks();
 
     // удаление Таски по идентификатору
     void removeTaskById(int taskId);
@@ -33,7 +33,7 @@ public interface        TaskManager {
 
     Epic getEpicById(int id);
 
-    ArrayList<Epic> getAllEpics();
+    List<Epic> getAllEpics();
 
     void removeAllEpics();
 
@@ -41,7 +41,7 @@ public interface        TaskManager {
 
     Subtask addNewSubtask(Subtask newSubtask);
 
-    ArrayList<Subtask> getAllSubtasks();
+    List<Subtask> getAllSubtasks();
 
     Subtask getSubtaskByID(int subtaskID);
 

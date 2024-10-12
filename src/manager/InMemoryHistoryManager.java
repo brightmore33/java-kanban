@@ -15,16 +15,30 @@ public class InMemoryHistoryManager implements HistoryManager {
     private Node<Task> tail;
     private int size = 0;
 
-    public class Node<T> {
-        public T data;
-        public Node<T> next;
-        public Node<T> prev;
 
-        public Node(Node<T> prev, T data, Node<T> next) {
-            this.prev = prev;
-            this.data = data;
-            this.next = next;
+
+
+
+    @Override
+    public void add(Task task) {
+        if (historyMap.containsKey(task.getId())) {
+            Node<Task> actualNode = historyMap.get(task.getId());
+            removeNode(actualNode);
         }
+        addLast(task);
+    }
+
+    @Override
+    public void remove(int id) {
+        if (historyMap.containsKey(id)) {
+            Node<Task> actualNode = historyMap.get(id);
+            removeNode(actualNode);
+        }
+    }
+
+    @Override
+    public List<Task> getHistory() {
+        return getTasks();
     }
 
     // добавляем запись в конец истории
@@ -38,6 +52,7 @@ public class InMemoryHistoryManager implements HistoryManager {
             head = newNode;
         } else {
             oldTail.next = newNode;
+            historyMap.put(segment.getId(), newNode);
         }
         size++;
     }
@@ -78,27 +93,15 @@ public class InMemoryHistoryManager implements HistoryManager {
         return history;
     }
 
-    @Override
-    public void add(Task task) {
-        if (historyMap.containsKey(task.getId())) {
-            Node<Task> actualNode = historyMap.get(task.getId());
-            removeNode(actualNode);
-        }
-        addLast(task);
-        Node<Task> newNode = tail;
-        historyMap.put(task.getId(), newNode);
-    }
+    private static class Node<T> {
+        public T data;
+        public Node<T> next;
+        public Node<T> prev;
 
-    @Override
-    public void remove(int id) {
-        if (historyMap.containsKey(id)) {
-            Node<Task> actualNode = historyMap.get(id);
-            removeNode(actualNode);
+        public Node(Node<T> prev, T data, Node<T> next) {
+            this.prev = prev;
+            this.data = data;
+            this.next = next;
         }
-    }
-
-    @Override
-    public List<Task> getHistory() {
-        return getTasks();
     }
 }
