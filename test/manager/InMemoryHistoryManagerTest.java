@@ -1,6 +1,6 @@
 package manager;
 
-import emuns.TaskState;
+import emun.TaskState;
 import models.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,6 +1,6 @@
 package models;
 
-import emuns.TaskState;
+import emun.TaskState;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

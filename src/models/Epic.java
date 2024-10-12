@@ -1,6 +1,6 @@
 package models;
 
-import emuns.TaskState;
+import emun.TaskState;
 
 import java.util.ArrayList;
 

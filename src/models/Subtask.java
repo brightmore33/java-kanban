@@ -1,6 +1,6 @@
 package models;
 
-import emuns.TaskState;
+import emun.TaskState;
 
 public class Subtask extends Task {
     private Integer epicID;

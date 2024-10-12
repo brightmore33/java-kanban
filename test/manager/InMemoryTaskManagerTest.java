@@ -1,6 +1,6 @@
 package manager;
 
-import emuns.TaskState;
+import emun.TaskState;
 import models.Epic;
 import models.Subtask;
 import models.Task;
@@ -9,8 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryTaskManagerTest {
     private Task task;
